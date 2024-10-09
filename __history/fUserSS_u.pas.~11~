@@ -1,0 +1,201 @@
+unit fUserSS_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, Menus, jpeg,fMainUserForm_u, StdCtrls,DMListings,DMSuburbs,DMAgencies;
+
+type
+  TfrmUserSS = class(TForm)
+    Panel1: TPanel;
+    Image1: TImage;
+    MainMenu1: TMainMenu;
+    Back1: TMenuItem;
+    Help1: TMenuItem;
+    Panel2: TPanel;
+    Memo1: TMemo;
+    Image2: TImage;
+    Image3: TImage;
+    Button1: TButton;
+    edtPrice: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    edtBath: TEdit;
+    edtArea: TEdit;
+    edtBed: TEdit;
+    edtPark: TEdit;
+    procedure Back1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmUserSS: TfrmUserSS;
+  found:boolean;
+implementation
+
+uses DMUsers;
+
+{$R *.dfm}
+
+procedure TfrmUserSS.Back1Click(Sender: TObject);
+begin
+ MainUserForm.show;
+end;
+
+procedure TfrmUserSS.FormShow(Sender: TObject);
+var
+myfile:textfile;
+sline:string;
+sPool,sPF:string;
+sSuburb,sBedNum,sBathNum,sType,sParkNum,svar:string;
+iMINP,iMaxP,iMINA,iMaxA,iType:integer;
+sMINP,sMaxP,sMINA,sMaxA:string;
+sPrice,sArea:string;
+cp:integer;
+IsPool,IsPF:boolean;
+begin
+found:=false;
+assignfile(myfile,'CurrentSearch.txt');
+reset(myfile);
+readln(myfile,sline);
+closefile(myfile);
+
+cp:=pos('/',sline);
+sType:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+if sType='House' then
+iType:=1
+else
+iType:=2;
+
+cp:=pos('/',sline);
+sSuburb:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+cp:=pos('/',sline);
+sBedNum:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+
+cp:=pos('/',sline);
+sBathNum:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+
+cp:=pos('/',sline);
+sParkNum:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+
+cp:=pos('/',sline);
+sPool:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+
+cp:=pos('/',sline);
+sPF:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+cp:=pos('/',sline);
+sPrice:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+sArea:=sline;
+
+if sPF='True' then
+IsPF:=true
+else
+IsPF:=false;
+
+
+cp:=pos('-',sPrice);
+sMINP:=copy(sPrice,1,cp-1);
+iMINP:=strtoint(sMINP);
+sMaxP:=copy(sPrice,cp+1,length(sPrice));
+iMaxP:=strtoint(sMaxP);
+
+cp:=pos('-',sArea);
+sMINA:=copy(sArea,1,cp-1);
+iMINA:=strtoint(sMINA);
+sMaxA:=copy(sArea,cp+1,length(sArea));
+iMaxA:=strtoint(sMaxA);
+
+showmessage(sType+'/'+sSuburb+'/'+sBedNum+'/'+sBathNum+'/'+sParkNum+'/'+sPool+'/'+sPF+'/'+inttostr(iMINP)+'-'+inttostr(iMaxP)+'/'+inttostr(iMINA)+'-'+inttostr(iMaxA));
+
+ {assignfile(myfile,'CurrentSearchrResults.txt'); // DMtblsuburbs.tblSuburbs
+ rewrite(myfile);
+
+ dmtbllistings.tblListings.First;
+while not dmtbllistings.tblListings.eof do
+begin
+if (dmtbllistings.tblListings['Typeid']=iType)and then
+begin
+//writeln(myfile,);
+end;
+dmtbllistings.tblListings.Next;
+end;
+ closefile(myfile);     }
+
+
+{   DMtblsuburbs.tblSuburbs.First;
+while not dMtblsuburbs.tblSuburbs.eof do
+ begin
+  dmtbllistings.tblListings.First;
+  while not dmtbllistings.tblListings.eof do
+  begin
+   if (dmtbllistings.tblListings['Suburbid']=DMtblsuburbs.tblSuburbs['Suburbid']) and ((DMtblsuburbs.tblSuburbs['Suburbname']=sSuburb)or(sSuburb='*')) then// and ((dmtbllistings.tblListings['Bedroom Number']=sBedNum) or(sBedNum='*')) then//and ((dmtbllistings.tblListings['Bathroom Number']=sBathNum)or(sBathNum='*')) and ((dmtbllistings.tblListings['Parking Number']= sParkNum)or( sParkNum='*')) and (dmtbllistings.tblListings['Pool']= IsPool) and (dmtbllistings.tblListings['Pets']= IsPF)then
+    begin
+     Memo1.Lines.add(dmtbllistings.tblListings['listingid']+dmtbllistings.tblListings['listingid']);
+
+    end;
+    dmtbllistings.tblListings.next;
+   end;
+    DMtblsuburbs.tblSuburbs.Next;
+end;     }
+ dmtbllistings.tblListings.First;
+while not dmtbllistings.tblListings.eof do
+  begin
+   DMtblsuburbs.tblSuburbs.First;
+   while not dMtblsuburbs.tblSuburbs.eof do
+ begin
+   svar:=dmtbllistings.tblListings['Bedroom Number'];
+   if (dmtbllistings.tblListings['Suburbid']=DMtblsuburbs.tblSuburbs['Suburbid']) and ((DMtblsuburbs.tblSuburbs['Suburbname']=sSuburb)or(sSuburb='*')) and ((svar=sBedNum)or(sBedNum='*')) then
+    begin
+     Memo1.Lines.add(DMtblsuburbs.tblSuburbs['Suburbname']);
+    end;
+    DMtblsuburbs.tblSuburbs.Next;
+ end;
+ dmtbllistings.tblListings.next;
+  end;
+
+
+
+ if found=false then
+ begin
+ Button1.Enabled:=false;
+ Button1.Visible:=false;
+ //Memo1.Enabled:=false;
+ //Memo1.Visible:=false;
+
+ end
+ else
+    Panel1.Caption:='';
+
+
+
+
+
+
+
+
+end;
+
+end.

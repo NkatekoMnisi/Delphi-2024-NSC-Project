@@ -1,0 +1,44 @@
+unit fAgencyLogin_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, StdCtrls, jpeg, ExtCtrls, Menus;
+
+type
+  TfrmAgencyLogin = class(TForm)
+    Panel1: TPanel;
+    Image1: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Panel2: TPanel;
+    edtName: TEdit;
+    edtSName: TEdit;
+    btnEnter: TButton;
+    BitBtn1: TBitBtn;
+    MainMenu1: TMainMenu;
+    Back1: TMenuItem;
+    procedure Back1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAgencyLogin: TfrmAgencyLogin;
+
+implementation
+
+uses fWelcomepage_u;
+
+{$R *.dfm}
+
+procedure TfrmAgencyLogin.Back1Click(Sender: TObject);
+begin
+ frmWelcomePageForm.show;
+ frmAgencyLogin.Close;
+end;
+
+end.

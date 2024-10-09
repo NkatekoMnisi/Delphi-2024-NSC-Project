@@ -1,0 +1,39 @@
+unit fAdminMana_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, jpeg, Grids, DBGrids,DMAdmins;
+
+type
+  TfrmAdminMana = class(TForm)
+    pnlUserManagement: TPanel;
+    Image1: TImage;
+    Panel1: TPanel;
+    Button2: TButton;
+    GroupBox2: TGroupBox;
+    Button3: TButton;
+    edtAName: TEdit;
+    edtWebS: TEdit;
+    GroupBox3: TGroupBox;
+    Button4: TButton;
+    edtEdit: TEdit;
+    ComboBox1: TComboBox;
+    Label2: TLabel;
+    Label1: TLabel;
+    dbgUsers: TDBGrid;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAdminMana: TfrmAdminMana;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,35 @@
+unit fAgencyPS_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, jpeg, ExtCtrls;
+
+type
+  TfrmAgencyPS = class(TForm)
+    pnlUserManagement: TPanel;
+    Image1: TImage;
+    Panel1: TPanel;
+    GroupBox3: TGroupBox;
+    Button4: TButton;
+    edtYT: TEdit;
+    cbYT: TComboBox;
+    GroupBox1: TGroupBox;
+    Button1: TButton;
+    edtST: TEdit;
+    cbTS: TComboBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAgencyPS: TfrmAgencyPS;
+
+implementation
+
+{$R *.dfm}
+
+end.

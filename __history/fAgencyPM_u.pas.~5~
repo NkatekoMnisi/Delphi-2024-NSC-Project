@@ -1,0 +1,64 @@
+unit fAgencyPM_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,DMAgencies,DMListings, StdCtrls, Grids, DBGrids, jpeg, ExtCtrls, Spin,
+  Menus;
+
+type
+  TfrmAgencyPM = class(TForm)
+    pnlUserManagement: TPanel;
+    Image1: TImage;
+    dbgUsers: TDBGrid;
+    Panel1: TPanel;
+    GroupBox1: TGroupBox;
+    Button1: TButton;
+    Button2: TButton;
+    GroupBox2: TGroupBox;
+    Label2: TLabel;
+    lblWeb: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Button3: TButton;
+    edtPrice: TEdit;
+    edtArea: TEdit;
+    edtSuburb: TEdit;
+    GroupBox3: TGroupBox;
+    Button4: TButton;
+    edtEdit: TEdit;
+    ComboBox1: TComboBox;
+    Label7: TLabel;
+    Label8: TLabel;
+    sedtBedroom: TSpinEdit;
+    sedtBathroom: TSpinEdit;
+    sedtParking: TSpinEdit;
+    cbPool: TCheckBox;
+    cbPetFriendly: TCheckBox;
+    CheckBox2: TCheckBox;
+    MainMenu1: TMainMenu;
+    Back1: TMenuItem;
+    procedure Back1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAgencyPM: TfrmAgencyPM;
+
+implementation
+
+uses fAgencyMain_u;
+
+{$R *.dfm}
+
+procedure TfrmAgencyPM.Back1Click(Sender: TObject);
+begin
+frmAgencyMain.show;
+frmAgencyPM.Close;
+end;
+
+end.

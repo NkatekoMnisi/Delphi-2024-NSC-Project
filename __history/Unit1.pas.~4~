@@ -1,0 +1,66 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, jpeg, StdCtrls, Menus,unit2,unit3;
+
+type
+  TWelcomePageForm = class(TForm)
+    pnlWelcome: TPanel;
+    imgLogo: TImage;
+    Label1: TLabel;
+    pnlBuy: TPanel;
+    pnlRent: TPanel;
+    pnlSell: TPanel;
+    Label2: TLabel;
+    MainMenu1: TMainMenu;
+    Login1: TMenuItem;
+    Login2: TMenuItem;
+    Admin1: TMenuItem;
+    Label3: TLabel;
+    Label4: TLabel;
+    imgBuy: TImage;
+    imgrent: TImage;
+    imgSell: TImage;
+    Label5: TLabel;
+    Label6: TLabel;
+    btnCon2: TButton;
+    btncon3: TButton;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Help2: TMenuItem;
+    Agency1: TMenuItem;
+    Login4: TMenuItem;
+    Register3: TMenuItem;
+    btncont1: TButton;
+    procedure Help2Click(Sender: TObject);
+    procedure Login2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  WelcomePageForm: TWelcomePageForm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TWelcomePageForm.Help2Click(Sender: TObject);
+begin
+HelpForm.show;
+WelcomePageForm.Hide;
+end;
+
+procedure TWelcomePageForm.Login2Click(Sender: TObject);
+begin
+  loginform.show;
+end;
+
+end.

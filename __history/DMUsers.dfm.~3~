@@ -1,0 +1,39 @@
+object DMtblUsers: TDMtblUsers
+  OldCreateOrder = False
+  Height = 281
+  Width = 491
+  object adoConUsers: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Pat\code\propert' +
+      'ymanagement.mdb;Persist Security Info=False'
+    LoginPrompt = False
+    Mode = cmShareDenyNone
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 416
+    Top = 8
+  end
+  object adotblUsers: TADOTable
+    Active = True
+    Connection = adoConUsers
+    CursorType = ctStatic
+    TableName = 'Users'
+    Left = 416
+    Top = 64
+  end
+  object ADOQUsers: TADOQuery
+    Active = True
+    Connection = adoConUsers
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from users')
+    Left = 416
+    Top = 144
+  end
+  object DSUsers: TDataSource
+    DataSet = ADOQUsers
+    Left = 416
+    Top = 208
+  end
+end

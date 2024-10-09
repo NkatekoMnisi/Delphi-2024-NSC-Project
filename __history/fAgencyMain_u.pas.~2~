@@ -1,0 +1,31 @@
+unit fAgencyMain_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, StdCtrls, jpeg, ExtCtrls;
+
+type
+  TfrmAgencyMain = class(TForm)
+    UserloginPanel: TPanel;
+    Image1: TImage;
+    btnEnter: TButton;
+    Button1: TButton;
+    Button2: TButton;
+    MainMenu1: TMainMenu;
+    Home1: TMenuItem;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAgencyMain: TfrmAgencyMain;
+
+implementation
+
+{$R *.dfm}
+
+end.

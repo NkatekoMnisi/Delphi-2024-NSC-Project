@@ -1,0 +1,87 @@
+unit fAgencyUpdate_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Grids, DBGrids, jpeg, ExtCtrls,fAgencyLogin_u,DMAgencies;
+
+type
+  TfrmAgencyUpt = class(TForm)
+    pnlUserManagement: TPanel;
+    Image1: TImage;
+    dbgAgencies: TDBGrid;
+    Panel1: TPanel;
+    GroupBox3: TGroupBox;
+    Button4: TButton;
+    edtEdit: TEdit;
+    ComboBox1: TComboBox;
+    Button5: TButton;
+    procedure FormShow(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAgencyUpt: TfrmAgencyUpt;
+
+implementation
+
+uses DMListings;
+
+{$R *.dfm}
+
+procedure TfrmAgencyUpt.Button4Click(Sender: TObject);
+var
+sField,corAName:string;
+begin
+if edtEdit.text<>'' then
+  begin
+sField:=sAgencyid;
+
+if ComboBox1.Text='Agency Name' then
+ begin
+
+DMtblAgencies.ADOQAgencies.SQL.Clear;
+DMtblAgencies.ADOQAgencies.SQL.Add('update agencies set agencyname="'+edtEdit.text+'" where agencyid='+sfield);
+DMtblAgencies.ADOQAgencies.ExecSQL;
+ end;
+ if ComboBox1.Text='Website' then
+ begin
+DMtblAgencies.ADOQAgencies.SQL.Clear;
+DMtblAgencies.ADOQAgencies.SQL.Add('update agencies set Website="'+edtEdit.text+'" where agencyid='+sfield);
+DMtblAgencies.ADOQAgencies.ExecSQL;
+end;
+if ComboBox1.Text='Contact Number' then
+ begin
+DMtblAgencies.ADOQAgencies.SQL.Clear;
+DMtblAgencies.ADOQAgencies.SQL.Add('update agencies set ContactNumber="'+edtEdit.text+'" where agencyid='+sfield);
+DMtblAgencies.ADOQAgencies.ExecSQL;
+ end;
+ if ComboBox1.Text='Email Address' then
+ begin
+DMtblAgencies.ADOQAgencies.SQL.Clear;
+DMtblAgencies.ADOQAgencies.SQL.Add('update agencies set EmailAddress="'+edtEdit.text+'" where agencyid='+sfield);
+DMtblAgencies.ADOQAgencies.ExecSQL;
+end;
+
+ DMtblAgencies.ADOQAgencies.SQL.Clear;
+DMtblAgencies.ADOQAgencies.SQL.Add('SELECT * FROM agencies WHERE agencyid = ' + sAgencyid );
+DMtblAgencies.ADOQAgencies.open;
+  end
+  else
+  showmessage('Edit cannot be empty');
+
+end;
+
+procedure TfrmAgencyUpt.FormShow(Sender: TObject);
+begin
+ DMtblAgencies.ADOQAgencies.SQL.Clear;
+DMtblAgencies.ADOQAgencies.SQL.Add('SELECT * FROM agencies WHERE agencyid = ' + sAgencyid );
+DMtblAgencies.ADOQAgencies.open;
+end;
+
+end.

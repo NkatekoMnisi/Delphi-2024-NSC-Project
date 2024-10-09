@@ -1,0 +1,140 @@
+unit fAdminAM_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,DMAgencies, StdCtrls, Grids, DBGrids, jpeg, ExtCtrls, Menus,DMListings;
+
+type
+  TfrmAdminAM = class(TForm)
+    pnlUserManagement: TPanel;
+    Image1: TImage;
+    dbgAgencies: TDBGrid;
+    Panel1: TPanel;
+    GroupBox1: TGroupBox;
+    Button1: TButton;
+    Button2: TButton;
+    GroupBox2: TGroupBox;
+    Button3: TButton;
+    edtAName: TEdit;
+    GroupBox3: TGroupBox;
+    Button4: TButton;
+    edtEdit: TEdit;
+    ComboBox1: TComboBox;
+    MainMenu1: TMainMenu;
+    H1: TMenuItem;
+    Help1: TMenuItem;
+    Label2: TLabel;
+    lblWeb: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    edtEmail: TEdit;
+    edtWebS: TEdit;
+    edtContNum: TEdit;
+    Button5: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure H1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAdminAM: TfrmAdminAM;
+
+implementation
+
+uses DMAdmins, fAdminMainS_u;
+
+{$R *.dfm}
+
+procedure TfrmAdminAM.Button1Click(Sender: TObject);
+begin
+ DMtblAgencies.ADOQAgencies.SQL.Clear;           //DMtblListings
+ DMtblAgencies.ADOQAgencies.SQL.Add('select agencies.agencyid,agencyname,count(listingid) as [Number of Properties] from agencies,listings where agencies.agencyid=listings.agencyid group by agencyname,agencies.agencyid order by count(listingid) desc ');
+DMtblAgencies.ADOQAgencies.open;
+end;
+
+procedure TfrmAdminAM.Button3Click(Sender: TObject);
+
+begin
+if (edtAName.text<>'') or (edtWebS.text<>'') or (edtContNum.text<>'') or (edtEmail.text<>'') then
+ begin
+
+DMtblAdmins.qryAdmins.SQL.Clear;
+DMtblAdmins.qryAdmins.SQL.Add('insert into agencies (AgencyName,Website,ContactNumber,EmailAddress) values ("'+edtAName.text+'","'+edtWebS.text+'","'+edtContNum.text+'","'+edtEmail.text+'")' );            //YearOfEmployment
+DMtblAdmins.qryAdmins.ExecSQL;
+
+DMtblAdmins.qryAdmins.SQL.Clear;
+DMtblAdmins.qryAdmins.SQL.Add('select * from agencies');
+DMtblAdmins.qryAdmins.Open;
+
+ end
+ else
+ showmessage('Surname or name cannot be empty');
+
+
+end;
+
+procedure TfrmAdminAM.Button4Click(Sender: TObject);
+var
+sField:string;
+begin
+if edtEdit.text<>'' then
+  begin
+sField:=dbgAgencies.DataSource.DataSet.FieldByName('agencyid').AsString;
+
+if ComboBox1.Text='Agency Name' then
+
+ begin
+DMtblAdmins.qryAdmins.SQL.Clear;
+DMtblAdmins.qryAdmins.SQL.Add('update agencies set agencyname="'+edtEdit.text+'" where agencyid='+sfield);
+DMtblAdmins.qryAdmins.ExecSQL;
+ end;
+ if ComboBox1.Text='Website' then
+ begin
+DMtblAdmins.qryAdmins.SQL.Clear;
+DMtblAdmins.qryAdmins.SQL.Add('update agencies set Website="'+edtEdit.text+'" where agencyid='+sfield);
+DMtblAdmins.qryAdmins.ExecSQL;
+end;
+if ComboBox1.Text='Contact Number' then
+ begin
+DMtblAdmins.qryAdmins.SQL.Clear;
+DMtblAdmins.qryAdmins.SQL.Add('update agencies set ContactNumber="'+edtEdit.text+'" where agencyid='+sfield);
+DMtblAdmins.qryAdmins.ExecSQL;
+ end;
+ if ComboBox1.Text='Email Address' then
+ begin
+DMtblAdmins.qryAdmins.SQL.Clear;
+DMtblAdmins.qryAdmins.SQL.Add('update agencies set EmailAddress="'+edtEdit.text+'" where agencyid='+sfield);
+DMtblAdmins.qryAdmins.ExecSQL;
+end;
+
+DMtblAdmins.qryAdmins.SQL.Clear;
+DMtblAdmins.qryAdmins.SQL.Add('select * from agencies');
+DMtblAdmins.qryAdmins.Open;
+  end
+  else
+  showmessage('Edit cannot be empty');
+
+end;
+
+procedure TfrmAdminAM.Button5Click(Sender: TObject);
+begin
+DMtblAdmins.qryAdmins.SQL.Clear;
+DMtblAdmins.qryAdmins.SQL.Add('select * from agencies');
+DMtblAdmins.qryAdmins.Open;
+end;
+
+procedure TfrmAdminAM.H1Click(Sender: TObject);
+begin
+   frmAdminAM.Close;
+ frmAdminMainS.show;
+end;
+
+end.

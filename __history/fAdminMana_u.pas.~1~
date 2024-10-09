@@ -1,0 +1,28 @@
+unit fAdminMana_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, jpeg;
+
+type
+  TfrmAdminReg = class(TForm)
+    UserloginPanel: TPanel;
+    Image1: TImage;
+    btnEnter: TButton;
+    Label1: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAdminReg: TfrmAdminReg;
+
+implementation
+
+{$R *.dfm}
+
+end.

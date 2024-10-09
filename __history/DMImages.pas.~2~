@@ -1,0 +1,27 @@
+unit DMImages;
+
+interface
+
+uses
+  SysUtils, Classes, DB, ADODB;
+
+type
+  TDMtblImages = class(TDataModule)
+    adoConImages: TADOConnection;
+    adotblImages: TADOTable;
+    ADOQImages: TADOQuery;
+    DSImages: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMtblImages: TDMtblImages;
+
+implementation
+
+{$R *.dfm}
+
+end.

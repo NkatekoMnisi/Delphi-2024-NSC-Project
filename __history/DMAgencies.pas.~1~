@@ -1,0 +1,23 @@
+unit DMAgencies;
+
+interface
+
+uses
+  SysUtils, Classes;
+
+type
+  TDMtblAgencies = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMtblAgencies: TDMtblAgencies;
+
+implementation
+
+{$R *.dfm}
+
+end.

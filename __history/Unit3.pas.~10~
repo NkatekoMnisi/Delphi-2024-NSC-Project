@@ -1,0 +1,47 @@
+unit Unit3;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, ExtCtrls, jpeg, StdCtrls;
+
+type
+  TLoginForm = class(TForm)
+    UserloginPanel: TPanel;
+    MainMenu1: TMainMenu;
+    Back1: TMenuItem;
+    Help1: TMenuItem;
+    Button1: TButton;
+    Edit1: TEdit;
+    Image1: TImage;
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Button2: TButton;
+    procedure Back1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  LoginForm: TLoginForm;
+
+implementation
+
+uses Unit1;
+
+{$R *.dfm}
+
+procedure TLoginForm.Back1Click(Sender: TObject);
+begin
+Loginform.Hide;
+WelcomePageForm.show;
+end;
+
+end.

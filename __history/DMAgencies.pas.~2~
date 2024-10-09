@@ -1,0 +1,27 @@
+unit DMAgencies;
+
+interface
+
+uses
+  SysUtils, Classes, DB, ADODB;
+
+type
+  TDMtblAgencies = class(TDataModule)
+    adoConAgencies: TADOConnection;
+    adotblAgencies: TADOTable;
+    ADOQAgencies: TADOQuery;
+    DSAgencies: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMtblAgencies: TDMtblAgencies;
+
+implementation
+
+{$R *.dfm}
+
+end.

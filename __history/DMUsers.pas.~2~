@@ -1,0 +1,27 @@
+unit DMUsers;
+
+interface
+
+uses
+  SysUtils, Classes, DB, ADODB;
+
+type
+  TDMtblUsers = class(TDataModule)
+    adoConUsers: TADOConnection;
+    adotblUsers: TADOTable;
+    ADOQUsers: TADOQuery;
+    DSUsers: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMtblUsers: TDMtblUsers;
+
+implementation
+
+{$R *.dfm}
+
+end.

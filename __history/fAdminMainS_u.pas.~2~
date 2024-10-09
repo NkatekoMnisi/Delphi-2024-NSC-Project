@@ -1,0 +1,38 @@
+unit fAdminMainS_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, StdCtrls, jpeg, ExtCtrls;
+
+type
+  TfrmAdminMainS = class(TForm)
+    UserloginPanel: TPanel;
+    Image1: TImage;
+    btnEnter: TButton;
+    MainMenu1: TMainMenu;
+    Home1: TMenuItem;
+    Notifications1: TMenuItem;
+    Button1: TButton;
+    Button2: TButton;
+    procedure Home1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAdminMainS: TfrmAdminMainS;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmAdminMainS.Home1Click(Sender: TObject);
+begin
+frmAdminMainS.Show;
+end;
+
+end.

@@ -1,0 +1,89 @@
+unit UserLogin_u;
+
+interface
+  uses sysutils,math;
+  type
+    UsersLoginInfo=class(TOBJECT)
+      private
+       fusername:string;
+      fusersurname:string;
+       fPassword:string;
+      public
+constructor create(username,usersurname,Password:string);
+function getUsername:string;
+function getUserpassword:string;
+function getUsersurname:string;
+procedure setCorrectName;
+procedure setCorrectPass;
+procedure setCorrectSurname;
+
+  end;
+implementation
+
+{ Users }
+
+
+
+{ UsersLoginInfo }
+
+constructor UsersLoginInfo.create(username, usersurname, Password: string);
+begin
+fusername:=username;
+fusersurname:=usersurname;
+fPassword:=Password;
+end;
+
+function UsersLoginInfo.getUsername: string;
+begin
+result:=fusername;
+end;
+
+function UsersLoginInfo.getUserpassword: string;
+begin
+result:=fPassword;
+end;
+
+function UsersLoginInfo.getUsersurname: string;
+begin
+result:=fusersurname;
+end;
+
+procedure UsersLoginInfo.setCorrectName;
+var
+i,j:integer;
+arrSnum:array [1..10] of string;
+begin
+arrSnum[1]:='0';
+arrSnum[2]:='1';
+arrSnum[3]:='2';
+arrSnum[4]:='3';
+arrSnum[5]:='4';
+arrSnum[6]:='5';
+arrSnum[7]:='6';
+arrSnum[8]:='7';
+arrSnum[9]:='8';
+arrSnum[10]:='9';
+
+for  i:= 1 to length(fusername) do
+begin
+for  j:= 1 to 10 do
+begin
+ if (fusername[i])=(arrSnum[j]) then
+
+
+end;
+
+end;
+end;
+
+procedure UsersLoginInfo.setCorrectPass;
+begin
+
+end;
+
+procedure UsersLoginInfo.setCorrectSurname;
+begin
+
+end;
+
+end.

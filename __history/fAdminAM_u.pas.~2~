@@ -1,0 +1,39 @@
+unit fAdminAM_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,DMAgencies, StdCtrls, Grids, DBGrids, jpeg, ExtCtrls;
+
+type
+  TfrmAdminAM = class(TForm)
+    pnlUserManagement: TPanel;
+    Image1: TImage;
+    dbgUsers: TDBGrid;
+    Panel1: TPanel;
+    GroupBox1: TGroupBox;
+    cmbSort: TComboBox;
+    Button1: TButton;
+    Button2: TButton;
+    GroupBox2: TGroupBox;
+    Button3: TButton;
+    edtSearch: TEdit;
+    GroupBox3: TGroupBox;
+    Button4: TButton;
+    edtEdit: TEdit;
+    ComboBox1: TComboBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAdminAM: TfrmAdminAM;
+
+implementation
+
+{$R *.dfm}
+
+end.

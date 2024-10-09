@@ -1,0 +1,24 @@
+unit fAdminAM_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs;
+
+type
+  TfrmAdminAM = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAdminAM: TfrmAdminAM;
+
+implementation
+
+{$R *.dfm}
+
+end.

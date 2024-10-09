@@ -1,0 +1,75 @@
+unit UserLogin_u;
+
+interface
+ uses sysutils,math;
+  type
+    Users=class(TOBJECT)
+      private
+      fUserid:integer;
+      fusername:string;
+      fusersurname:string;
+      fContactNumber:string;
+      fEmailAddress:string;
+      fSavedcriteria:string;
+       fPassword:string;
+      public
+constructor create(userid:integer;username,usersurname,ContactNumber,EmailAddress,Savedcriteria,Password:string);
+function getUseremail:string;
+function getUserpassword:string;
+procedure setCorrect_Username;
+{function gettype:integer;
+procedure setPassword(u:string);  }
+
+    end;
+implementation
+{constructor Users.create(un, pw: string; t: integer);
+begin
+   fusername:=un;
+   fPassword:=pw;
+   //ftype:=t;
+end;}
+{ Users }
+
+constructor Users.create(userid: integer; username, usersurname, ContactNumber,
+  EmailAddress, Savedcriteria, Password: string);
+begin
+   fUserid:=userid;
+   fusername:=username;
+     fusersurname:=usersurname;
+      fContactNumber:=ContactNumber;
+      fEmailAddress:=EmailAddress;
+      fSavedcriteria:=Savedcriteria;
+       fPassword:=Password;
+end;
+
+function Users.getUseremail: string;
+begin
+result:=fEmailAddress;
+end;
+
+function Users.getUserpassword: string;
+begin
+ result:=fPassword
+end;
+
+procedure Users.setCorrect_Username;
+var
+i,j:integer;
+arrnum:array[1..10] of integer=(0,1,2,3,4,5,6,7,8,9);
+begin
+for I := 1 to length(fusername) do
+begin
+for j := 1 to length(arrnum) do
+begin
+if arrnum[j]=fusername[i] then
+begin
+
+end;
+end;
+end;
+
+
+fusername:=
+end;
+
+end.

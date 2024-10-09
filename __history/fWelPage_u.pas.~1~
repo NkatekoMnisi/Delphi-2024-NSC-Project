@@ -1,0 +1,36 @@
+unit fWelPage_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, pngimage, ExtCtrls, Menus;
+
+type
+  THelpForm = class(TForm)
+    MainMenu1: TMainMenu;
+    Back1: TMenuItem;
+    Panel1: TPanel;
+    procedure Back1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  HelpForm: THelpForm;
+
+implementation
+
+uses Unit1;
+
+{$R *.dfm}
+
+procedure THelpForm.Back1Click(Sender: TObject);
+begin
+welcomepageform.show;
+helpform.hide;
+end;
+
+end.

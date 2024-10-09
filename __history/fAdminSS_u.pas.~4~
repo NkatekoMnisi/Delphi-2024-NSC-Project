@@ -1,0 +1,35 @@
+unit fAdminSS_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, StdCtrls, jpeg, ExtCtrls;
+
+type
+  TfrmAdminSS = class(TForm)
+    pnlUserManagement: TPanel;
+    Image1: TImage;
+    Panel1: TPanel;
+    GroupBox3: TGroupBox;
+    edtEdit: TEdit;
+    GroupBox1: TGroupBox;
+    Edit1: TEdit;
+    GroupBox2: TGroupBox;
+    Edit2: TEdit;
+    GroupBox4: TGroupBox;
+    Edit3: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAdminSS: TfrmAdminSS;
+
+implementation
+
+{$R *.dfm}
+
+end.

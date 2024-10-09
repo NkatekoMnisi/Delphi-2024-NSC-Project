@@ -1,0 +1,71 @@
+unit fAgencyPS_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, jpeg, ExtCtrls, Menus,DMSuburbs,DMListings,DMAgencies,fAgencyLogin_u, DateUtils;
+
+type
+  TfrmAgencyPS = class(TForm)
+    pnlUserManagement: TPanel;
+    Image1: TImage;
+    Panel1: TPanel;
+    GroupBox3: TGroupBox;
+    Button4: TButton;
+    edtYT: TEdit;
+    cbYT: TComboBox;
+    GroupBox1: TGroupBox;
+    Button1: TButton;
+    edtST: TEdit;
+    cbTS: TComboBox;
+    MainMenu1: TMainMenu;
+    Back1: TMenuItem;
+    procedure Back1Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAgencyPS: TfrmAgencyPS;
+
+implementation
+
+uses fAgencyMain_u;
+
+{$R *.dfm}
+
+procedure TfrmAgencyPS.Back1Click(Sender: TObject);
+begin
+frmAgencyMain.show;
+frmAgencyPS.Close;
+end;
+
+procedure TfrmAgencyPS.Button4Click(Sender: TObject);
+var
+iCount:integer;
+dt:Tdate;
+begin
+iCount:=0;
+
+
+DMtbllistings.tblListings.First;
+while not DMtbllistings.tblListings.eof do
+begin
+dt:=DMtbllistings.tblListings['Listing Date'];
+if (DMtbllistings.tblListings['Agencyid']=sAgencyid) then
+begin
+showmessage(datetostr((dt)));
+end;
+DMtbllistings.tblListings.Next;
+end;
+
+
+
+
+end;
+
+end.

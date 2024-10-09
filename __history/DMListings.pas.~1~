@@ -1,0 +1,23 @@
+unit DMListings;
+
+interface
+
+uses
+  SysUtils, Classes;
+
+type
+  TDMListing = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMListing: TDMListing;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,38 @@
+unit UserLogin_u;
+
+interface
+  uses sysutils,math;
+  type
+    Users=class(TOBJECT)
+      private
+      fUserid:integer;
+      fusername:string;
+      fusersurname:string;
+      fContactNumber:string;
+      fEmailAddress:string;
+      fSavedcriteria:string;
+       fPassword:string;
+      public
+constructor create(username,usersurname,Password:string);
+
+function getUserpassword:string;
+
+{function gettype:integer;
+procedure setPassword(u:string);  }
+
+    end;
+implementation
+
+{ Users }
+
+constructor Users.create(username, usersurname, Password: string);
+begin
+
+end;
+
+function Users.getUserpassword: string;
+begin
+
+end;
+
+end.

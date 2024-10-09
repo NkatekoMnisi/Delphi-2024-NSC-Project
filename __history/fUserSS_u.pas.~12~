@@ -1,0 +1,188 @@
+unit fUserSS_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, Menus, jpeg,fMainUserForm_u, StdCtrls,DMListings,DMSuburbs,DMAgencies;
+
+type
+  TfrmUserSS = class(TForm)
+    Panel1: TPanel;
+    Image1: TImage;
+    MainMenu1: TMainMenu;
+    Back1: TMenuItem;
+    Help1: TMenuItem;
+    Panel2: TPanel;
+    Memo1: TMemo;
+    Image2: TImage;
+    Image3: TImage;
+    Button1: TButton;
+    edtPrice: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    edtBath: TEdit;
+    edtArea: TEdit;
+    edtBed: TEdit;
+    edtPark: TEdit;
+    procedure Back1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmUserSS: TfrmUserSS;
+  found:boolean;
+  count:integer;
+implementation
+
+uses DMUsers;
+
+{$R *.dfm}
+
+procedure TfrmUserSS.Back1Click(Sender: TObject);
+begin
+ MainUserForm.show;
+end;
+
+procedure TfrmUserSS.FormShow(Sender: TObject);
+var
+myfile:textfile;
+sline:string;
+sPool,sPF:string;
+sSuburb,sBedNum,sBathNum,sType,sParkNum:string;
+iMINP,iMaxP,iMINA,iMaxA,iType:integer;
+sMINP,sMaxP,sMINA,sMaxA:string;
+sPrice,sArea:string;
+cp:integer;
+IsPool,IsPF:boolean;
+sDSuburb,sDBedNum,sDBathNum,sDType,sDParkNum:string;
+iDArea,iDprice,iDType:integer;
+IsDPool,IsDPF:boolean;
+begin
+count:=0;
+found:=false;
+assignfile(myfile,'CurrentSearch.txt');
+reset(myfile);
+readln(myfile,sline);
+closefile(myfile);
+
+cp:=pos('/',sline);
+sType:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+if sType='House' then
+iType:=1
+else
+iType:=2;
+
+cp:=pos('/',sline);
+sSuburb:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+cp:=pos('/',sline);
+sBedNum:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+
+cp:=pos('/',sline);
+sBathNum:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+
+cp:=pos('/',sline);
+sParkNum:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+
+cp:=pos('/',sline);
+sPool:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+
+cp:=pos('/',sline);
+sPF:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+cp:=pos('/',sline);
+sPrice:=copy(sline,1,cp-1);
+delete(sline,1,cp);
+
+sArea:=sline;
+
+if sPF='True' then
+IsPF:=true
+else
+IsPF:=false;
+if sPool='True' then
+IsPool:=true
+else
+IsPool:=false;
+
+cp:=pos('-',sPrice);
+sMINP:=copy(sPrice,1,cp-1);
+iMINP:=strtoint(sMINP);
+sMaxP:=copy(sPrice,cp+1,length(sPrice));
+iMaxP:=strtoint(sMaxP);
+
+cp:=pos('-',sArea);
+sMINA:=copy(sArea,1,cp-1);
+iMINA:=strtoint(sMINA);
+sMaxA:=copy(sArea,cp+1,length(sArea));
+iMaxA:=strtoint(sMaxA);
+
+showmessage(sType+'/'+sSuburb+'/'+sBedNum+'/'+sBathNum+'/'+sParkNum+'/'+sPool+'/'+sPF+'/'+inttostr(iMINP)+'-'+inttostr(iMaxP)+'/'+inttostr(iMINA)+'-'+inttostr(iMaxA));
+
+DMtblsuburbs.tblSuburbs.First;
+while not dMtblsuburbs.tblSuburbs.eof do
+ begin
+  dmtbllistings.tblListings.First;
+  while not dmtbllistings.tblListings.eof do
+  begin
+    sDSuburb:=DMtblsuburbs.tblSuburbs['Suburbname'];
+     sDBedNum:=dmtbllistings.tblListings['Bedroom Number'];
+     sDBathNum:=dmtbllistings.tblListings['Bathroom Number'];
+     sDParkNum:=dmtbllistings.tblListings['Parking Number'];
+     iDType:=dmtbllistings.tblListings['Typeid'];
+     IsDPool:=dmtbllistings.tblListings['Pool'];
+     IsDPF:=dmtbllistings.tblListings['Pets'];
+     iDPrice:=dmtbllistings.tblListings['Price'];
+     iDArea:=dmtbllistings.tblListings['Area Size(m3)'];
+   if (dmtbllistings.tblListings['Suburbid']=DMtblsuburbs.tblSuburbs['Suburbid']) and (iType=iDType)and((iDPrice>iMinP)and(iDPrice<iMaxP)) and ((iDArea>iMinA)and(iDArea<iMaxA)) and ((sDSuburb=sSuburb)or(sSuburb='*')) and ((sDBedNum=sBedNum) or(sBedNum='*')) and ((sDBathNum=sBathNum)or(sBathNum='*')) and ((sDParkNum= sParkNum)or( sParkNum='*')) and (IsDPool= IsPool) and (IsDPF= IsPF)then
+    begin
+     Memo1.Lines.add(dmtbllistings.tblListings['listingid']);
+      found:=true;
+    end;
+    dmtbllistings.tblListings.next;
+   end;
+    DMtblsuburbs.tblSuburbs.Next;
+end;
+
+
+
+ if found=false then
+ begin
+ Button1.Enabled:=false;
+ Button1.Visible:=false;
+ Memo1.Enabled:=false;
+ Memo1.Visible:=false;
+  Panel2.Visible:=false;
+ end
+ else
+    Panel1.Caption:='';
+
+
+
+
+
+
+
+
+end;
+
+end.

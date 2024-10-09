@@ -1,0 +1,25 @@
+unit AdminMainS_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls;
+
+type
+  TfrmAdLoginHelp = class(TForm)
+    Panel1: TPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAdLoginHelp: TfrmAdLoginHelp;
+
+implementation
+
+{$R *.dfm}
+
+end.

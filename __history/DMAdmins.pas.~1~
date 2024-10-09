@@ -1,0 +1,27 @@
+unit DMAdmins;
+
+interface
+
+uses
+  SysUtils, Classes, ADODB, DB;
+
+type
+  TDMtblAdmins = class(TDataModule)
+    conAdmins: TADOConnection;
+    tblAdmins: TADOTable;
+    DSAdmins: TDataSource;
+    qryAdmins: TADOQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMtblAdmins: TDMtblAdmins;
+
+implementation
+
+{$R *.dfm}
+
+end.

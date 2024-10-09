@@ -1,0 +1,27 @@
+unit DMSuburbs;
+
+interface
+
+uses
+  SysUtils, Classes, ADODB, DB;
+
+type
+  TDMtblSuburbs = class(TDataModule)
+    conSuburbs: TADOConnection;
+    tblSuburbs: TADOTable;
+    DSSuburbs: TDataSource;
+    qrySuburbs: TADOQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMtblSuburbs: TDMtblSuburbs;
+
+implementation
+
+{$R *.dfm}
+
+end.

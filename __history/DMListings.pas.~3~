@@ -1,0 +1,27 @@
+unit DMListings;
+
+interface
+
+uses
+  SysUtils, Classes, DB, ADODB;
+
+type
+  TDMtblListings = class(TDataModule)
+    tblListings: TADOTable;
+    qryListings: TADOQuery;
+    DSListings: TDataSource;
+    conListings: TADOConnection;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMtblListings: TDMtblListings;
+
+implementation
+
+{$R *.dfm}
+
+end.

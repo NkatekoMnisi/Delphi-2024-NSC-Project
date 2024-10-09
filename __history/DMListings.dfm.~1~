@@ -1,0 +1,5 @@
+object DMListing: TDMListing
+  OldCreateOrder = False
+  Height = 184
+  Width = 273
+end

@@ -1,0 +1,56 @@
+unit fAdminUM_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,DMUsers, Grids, DBGrids, jpeg, ExtCtrls, Menus, StdCtrls;
+
+type
+  TfrmAdminUM = class(TForm)
+    UserloginPanel: TPanel;
+    Image1: TImage;
+    DBGrid1: TDBGrid;
+    Panel1: TPanel;
+    MainMenu1: TMainMenu;
+    Back1: TMenuItem;
+    GroupBox1: TGroupBox;
+    cmbSort: TComboBox;
+    Button1: TButton;
+    Button2: TButton;
+    GroupBox2: TGroupBox;
+    Button3: TButton;
+    Edit1: TEdit;
+    GroupBox3: TGroupBox;
+    Button4: TButton;
+    Edit2: TEdit;
+    ComboBox1: TComboBox;
+    procedure Back1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAdminUM: TfrmAdminUM;
+
+implementation
+
+uses fAdminMainS_u;
+
+{$R *.dfm}
+
+procedure TfrmAdminUM.Back1Click(Sender: TObject);
+begin
+frmAdminMainS.show;
+frmAdminUM.Hide;
+end;
+
+procedure TfrmAdminUM.Button2Click(Sender: TObject);
+begin
+DMtblUsers.adotblUsers.Delete;
+end;
+
+end.

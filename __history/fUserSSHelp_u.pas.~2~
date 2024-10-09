@@ -1,0 +1,41 @@
+unit fUserSSHelp_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls;
+
+type
+  TfrmUserSSHelp = class(TForm)
+    Panel1: TPanel;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+     panel2:Tpanel;
+     btn: TButton;               {}
+  public
+    { Public declarations }
+  end;
+
+var
+  frmUserSSHelp: TfrmUserSSHelp;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmUserSSHelp.FormCreate(Sender: TObject);
+begin
+      panel2:=Tpanel.create(frmUserSSHelp);      {}
+   panel2.parent:=frmUserSSHelp;
+    panel2.left:=120;
+    panel2.top:=120;
+    panel2.Width:=350;
+panel2.height:=100;
+   panel2.caption:='Welcome to my pat 2021';   {}
+     btn:=Tpanel.create(frmUserSSHelp);
+    btn.parent:=frmUserSSHelp;
+end;
+
+end.

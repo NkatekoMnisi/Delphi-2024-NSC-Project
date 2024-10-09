@@ -1,0 +1,27 @@
+unit fUserNotfScreen_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls;
+
+type
+  TfrmUserNotf = class(TForm)
+    Panel1: TPanel;
+    Memo1: TMemo;
+    Label1: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmUserNotf: TfrmUserNotf;
+
+implementation
+
+{$R *.dfm}
+
+end.

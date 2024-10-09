@@ -1,0 +1,23 @@
+unit DMImages;
+
+interface
+
+uses
+  SysUtils, Classes;
+
+type
+  TDMtblImages = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMtblImages: TDMtblImages;
+
+implementation
+
+{$R *.dfm}
+
+end.
